@@ -4,24 +4,19 @@ import HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const config: Configuration = {
   mode: "development",
-  entry: './hello.ts',
+  entry: './src/entry.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'web.bundle.js'
   },
   resolve: {
     alias: {
-      'request': 'browser-request'
-    }
+      '#request': path.resolve(__dirname, 'src/isomorphicRequest/web')
+    },
+    extensions: ['.ts']
   },
   module: {
     rules: [{
-      test: /\.css$/,
-      use: [
-        {loader: 'style-loader'},
-        {loader: 'css-loader'}
-      ]
-    }, {
       test: /\.ts$/,
       loader: 'ts-loader'
     }]

@@ -1,8 +1,13 @@
-TypeScript Node "request" Bundle In Node and Browser with "alias" Demo
-======================================================================
+TypeScript Isomorphic Request in Node and Web Demo
+==================================================
 
-`request`是一个node下的http request库，为了让它在浏览器下也能正常运行，在打包为浏览器下的代码时，
-使用webpack的alias，将`request`替换为`browser-request`。
+如何定义一个isomorphic的request库，可以在node与web环境同时使用。
+
+关键点：
+
+1. 使用`declare module`声明了一个用于占位的module: `#request`，并定义了相关的接口
+2. 使用request库（node)与jquery（web）分别实现该`#requset`接口
+3. 使用两个webpack的配置，分别定义alias，将`#request`替换为该环境下真实的实现
 
 ## Node
 
